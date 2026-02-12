@@ -30,6 +30,8 @@ To change zone highlight color, just print hex colour value in RGB format to the
 
 Omen and other hotkeys are bound to regular X11 keysyms, use your chosen desktop's hotkey manager to assign them to functions like any other key.
 
+Run omen_gui.py for a GUI interface for changing colors.
+
 ## To do:
 
 - [ ] FourZone brightness control
