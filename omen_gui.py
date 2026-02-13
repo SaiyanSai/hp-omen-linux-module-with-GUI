@@ -42,7 +42,21 @@ class OmenGui:
             print(f"Error: Could not write to {zone}. Check permissions.")
 
     def set_color(self, zone):
-        color = colorchooser.askcolor(title=f"Choose color for {zone}")
+        with open(f'{zone_path}/{zone}', 'rt') as f:
+            current = f.readline().strip().replace(' ', '').split(',')
+        colors = [0, 0, 0]
+        for c in current:
+            colon = c.index(':') + 1
+            if 'red' in c:
+                colors[0] = int(c[colon:])
+                continue
+            if 'green' in c:
+                colors[1] = int(c[colon:])
+                continue
+            if 'blue' in c:
+                colors[2] = int(c[colon:])
+                
+        color = colorchooser.askcolor(title=f"Choose color for {zone}", color=tuple(colors))
         if color[1]:
             self.apply_rgb(zone, color[1])
 
